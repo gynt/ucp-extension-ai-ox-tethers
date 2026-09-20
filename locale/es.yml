@@ -1,0 +1,21 @@
+fixes: Correcciones
+title: Control de postes de bueyes de la IA
+description: Configura cómo construye la IA postes de bueyes para sus canteras.
+mode: Ajustes AIC
+override_aic: Usar estos valores para todas las IA
+use_aic: Permitir ajustes AIC propios de cada IA
+disable_initial: No construir automáticamente un poste con cada cantera
+dynamic_title: Límites dinámicos
+help_text: Cada poste queda vinculado a la cantera de la que recogió piedra por última vez. La IA añade
+  postes si una cantera tiene pocos o si la piedra por poste supera el umbral. Los límites de abajo restringen
+  la construcción de nuevos postes.
+max_total: Máximo de postes por IA
+max_per_quarry: Multiplicador del límite total por cantera
+multiplier_help: El límite total tampoco puede superar este valor multiplicado por el número de canteras.
+max_linked: Máximo de postes vinculados por cantera
+min_linked: Mínimo de postes vinculados por cantera
+threshold: Piedra por poste antes de añadir otro
+advanced: Ajustes avanzados
+logging: Registrar las decisiones de la IA sobre postes
+log_level: Nivel de registro
+ai: IA

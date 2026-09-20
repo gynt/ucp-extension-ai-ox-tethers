@@ -1,0 +1,20 @@
+fixes: Fixes
+title: AI Ox Tether Control
+description: Control how the AI builds ox tethers for its quarries.
+mode: AIC settings
+override_aic: Use these defaults for every AI
+use_aic: Allow per-AI AIC settings
+disable_initial: Do not place an ox tether automatically with each quarry
+dynamic_title: Dynamic limits
+help_text: Each ox tether is linked to the quarry it last collected stone from. The AI adds tethers when
+  a quarry has too few, or when stone per tether exceeds the threshold. The limits below cap further building.
+max_total: Maximum ox tethers per AI
+max_per_quarry: Total limit multiplier per quarry
+multiplier_help: The total limit is also capped at this value multiplied by the number of quarries.
+max_linked: Maximum linked tethers per quarry
+min_linked: Minimum linked tethers per quarry
+threshold: Stone per tether before adding another
+advanced: Advanced settings
+logging: Log AI ox tether decisions
+log_level: Log level
+ai: AI

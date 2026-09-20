@@ -1,37 +1,40 @@
-# KI-Logik: Ochsenjoche
+# KI: Ochsenjoche
 
-Die Standard-KI von Stronghold Crusader ist auf drei Ochsenjoche pro Steinbruch limitiert und platziert bei jedem neuen Steinbruch automatisch ein Joch. Dies führt zu ineffizienter Steinlogistik. Dieses Plugin ersetzt die starre Zuweisung durch eine dynamische Logik.
+Die KI baut normalerweise bis zu 3 Ochsenjoche pro Steinbruch. Außerdem setzt sie bei jedem Bau oder Wiederaufbau eines Steinbruchs automatisch ein Joch.
 
-Die Kernfunktion ist die dynamische Verknüpfung: Ein Ochsenjoch wird nun dem Steinbruch zugeordnet, von dem es zuletzt Steine abgeholt hat. Basierend auf dieser dynamischen Zuteilung entscheidet die KI, ob und wo weitere Ochsenjoche zur Optimierung der Steinabholung erforderlich sind.
+Diese automatischen Joche können die Wohnkapazität der KI ausschöpfen, sodass keine neuen Bauern mehr erscheinen. Mit dieser Erweiterung lassen sie sich abschalten und die Regeln für den Bau weiterer Joche anpassen.
 
----
+Ein **zugeordnetes Ochsenjoch** gehört zu dem Steinbruch, von dem sein Arbeiter zuletzt Stein abgeholt hat. Diese Zuordnung wird dynamisch aktualisiert, statt fest vorgegeben zu sein.
+
 ## Funktionen
-- Aufhebung des harten Limits von 3 Ochsenjochen pro Steinbruch.
-- Konfigurierbare Entscheidungsregeln für den Bau von Ochsenjochen.
-- Individuelle Anpassung der Regeln für jede KI über die AIC-Datei.
+- Mehr als 3 Ochsenjoche pro Steinbruch erlauben
+- Entscheidungsregeln für den Bau weiterer Ochsenjoche anpassen
+- Regeln pro KI über die AIC anpassen
 
----
 ## AIC-Parameter
 
-### `AIOxTethers_DisableInitialOxTether`
-- **0:** Standardverhalten. Die KI baut bei jedem Steinbruch ein initiales Ochsenjoch.
-- **1:** Deaktiviert das initiale Ochsenjoch. Der Bau erfolgt ausschließlich über die Logik-Parameter.
-
 ### `AIOxTethers_Logic`
-- **0:** Vanilla-Logik.
-- **1:** Aktiviert die dynamische Zuweisungslogik dieses Plugins.
+0: Ursprüngliche Spiellogik.
+1: Dynamische Logik mit den folgenden Limits und Regeln zur Steinlast.
 
 ### `AIOxTethers_MaxOxTethers`
-Definiert die absolute Obergrenze an Ochsenjochen für die KI. Dieser Wert wird unter keinen Umständen überschritten.
+Gesamtlimit für Ochsenjoche pro Spieler.
 
 ### `AIOxTethers_DynamicMaxOxTethers`
-Definiert eine dynamische Obergrenze. Das Maximum berechnet sich aus: `(Dieser Wert) * (Anzahl der Steinbrüche)`.
-
-### `AIOxTethers_MinimumOxTethersPerQuarry`
-Soll eine Unterversorgung verhindern. Fällt die Anzahl der einem Steinbruch zugewiesenen Ochsenjoche unter diesen Wert, wird der Bau eines neuen Jochs für diesen Steinbruch veranlasst.
-
-### `AIOxTethers_MaximumOxTethersPerQuarry`
-Verhindert den Bau weiterer Ochsenjoche für einen Steinbruch, sobald die Anzahl der ihm zugewiesenen Joche diesen Wert erreicht hat.
+Gesamtlimit für Ochsenjoche = dieser Wert × Anzahl der Steinbrüche.
+Es gilt jeweils das niedrigere der 2 Gesamtlimits.
 
 ### `AIOxTethers_ThresholdStoneLoad`
-Der Schwellenwert, der den Bedarf für ein neues Ochsenjoch signalisiert. Ein neues Joch wird gebaut, wenn das Ergebnis der Formel `Steine im Steinbruch / zugewiesene Joche` diesen Wert übersteigt.
+Übersteigt `Steine/zugeordnete Ochsenjoche` an einem Steinbruch diesen Wert, wird ein weiteres Joch gebaut, sofern die Limits es erlauben. Ohne zugeordnete Joche wird die Steinmenge direkt verwendet.
+
+### `AIOxTethers_DisableInitialOxTether`
+0: Bei jedem Bau oder Wiederaufbau eines Steinbruchs automatisch ein Joch setzen.
+1: Dieses automatische Setzen abschalten.
+
+Diese Einstellung ist unabhängig von der dynamischen Logik und ihren Limits.
+
+### `AIOxTethers_MinimumOxTethersPerQuarry`
+Hat ein Steinbruch weniger zugeordnete Ochsenjoche als dieser Wert, wird unabhängig von der Steinlast ein weiteres gebaut, sofern das Gesamtlimit es erlaubt.
+
+### `AIOxTethers_MaximumOxTethersPerQuarry`
+Limit für zugeordnete Ochsenjoche, die aufgrund der Steinlast für einen Steinbruch gebaut werden. Das Minimum darf nicht höher als dieses Limit sein.

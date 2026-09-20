@@ -1,0 +1,21 @@
+fixes: Düzeltmeler
+title: Yapay zekâ öküz bağlama yeri kontrolü
+description: Yapay zekânın taş ocakları için nasıl öküz bağlama yeri kuracağını ayarlar.
+mode: AIC ayarları
+override_aic: Bu varsayılanları tüm yapay zekâlar için kullan
+use_aic: Yapay zekâya özel AIC ayarlarına izin ver
+disable_initial: Her taş ocağıyla otomatik olarak öküz bağlama yeri kurma
+dynamic_title: Dinamik sınırlar
+help_text: Her öküz bağlama yeri en son taş aldığı ocağa bağlanır. Yapay zekâ, bir ocağa bağlı yerler
+  azsa veya yer başına taş miktarı eşiği aşarsa yenilerini kurar. Aşağıdaki sınırlar daha fazla kurulum
+  yapılmasını kısıtlar.
+max_total: Yapay zekâ başına en fazla bağlama yeri
+max_per_quarry: Taş ocağı başına toplam sınır çarpanı
+multiplier_help: Toplam sınır ayrıca bu değerin taş ocağı sayısıyla çarpımıyla sınırlanır.
+max_linked: Ocak başına en fazla bağlı yer
+min_linked: Ocak başına en az bağlı yer
+threshold: Yeni yer kurmadan önce yer başına taş miktarı
+advanced: Gelişmiş ayarlar
+logging: Yapay zekânın öküz bağlama yeri kararlarını günlüğe yaz
+log_level: Günlük düzeyi
+ai: Yapay zekâ

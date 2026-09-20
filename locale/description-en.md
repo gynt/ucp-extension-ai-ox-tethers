@@ -1,9 +1,10 @@
 # AI: Ox Tethers
-Vanilla AI has an upper bound on three ox tethers per quarry, plus it always builds an ox tether when it places a quarry.
 
-This combination leads to strange behavior as the game progress. This extension addresses this.
+The AI normally builds up to 3 ox tethers per quarry. It also automatically places a tether whenever it builds or rebuilds a quarry.
 
-The core feature of this extension is that the ox tethers that belong to a quarry are no longer hardcoded but dynamically computed based on the quarry the ox tether worker took stones from last. These ox tethers are termed "linked ox tethers"
+These automatic tethers can fill the AI’s housing and stop new peasants from spawning. This extension lets you disable them and customize when more tethers are built.
+
+A **linked ox tether** belongs to the quarry its worker last collected stone from. These links are updated dynamically instead of using a fixed assignment.
 
 ## Features
 - Allow more than 3 ox tethers per quarry
@@ -11,23 +12,29 @@ The core feature of this extension is that the ox tethers that belong to a quarr
 - Customize the rules per AI via the AIC
 
 ## AIC parameters
-### `AIOxTethers_DisableInitialOxTether`
-0 means vanilla behavior, 1 means do not built an ox tether everytime a quarry is (re)built.
 
 ### `AIOxTethers_Logic`
-Set the logic to apply. 0 means vanilla, 1 means dynamic.
+0: Original game logic.
+1: Dynamic logic using the caps and stone-load rules below.
 
 ### `AIOxTethers_MaxOxTethers`
-The total amount of ox tethers for this player will never go above this value.
+Total ox tether cap per player.
 
 ### `AIOxTethers_DynamicMaxOxTethers`
-The total amount of ox tethers for this player will never go above this value multiplied by the amount of quarries.
+Total ox tether cap = this value × number of quarries.
+The lower of the 2 total caps applies at any point.
+
+### `AIOxTethers_ThresholdStoneLoad`
+If `stones/linked ox tethers` goes above this value for a quarry, another ox tether is built, subject to the caps. With no linked tethers, the stone amount is used directly.
+
+### `AIOxTethers_DisableInitialOxTether`
+0: Automatically place a tether whenever a quarry is built or rebuilt.
+1: Disable this automatic placement.
+
+This setting is independent of dynamic logic and its caps.
 
 ### `AIOxTethers_MinimumOxTethersPerQuarry`
-If fewer linked ox tethers take stones from this quarry than this value, an ox tether will be built for this quarry.
+If a quarry has fewer linked ox tethers than this value, another is built regardless of stone load, subject to the total cap.
 
 ### `AIOxTethers_MaximumOxTethersPerQuarry`
-If the amount of linked ox tethers for a quarry is higher than this value, no ox tether is built for this quarry.
-
-### `AIOxTethers_ThresholdStoneLoad` 
-If `stones/linked ox tethers` goes above this value for a quarry, another ox tether is built for that quarry.
+Cap on linked ox tethers built for a quarry based on stone load. Keep the minimum at or below this cap.

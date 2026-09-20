@@ -1,9 +1,9 @@
 name: ai-ox-tethers
-display-name: "AI: Ox Tethers"
-version: 1.0.3
+display-name: 'AI: Ox Tethers'
+version: 1.0.4
 author: gynt
 type: module
 dependencies:
-  framework: ">=3.0.4"
-  frontend: ">=1.0.2"
-  aicloader: ">=1.1.0"
+  framework: '>=3.0.4'
+  frontend: '>=1.0.16 <2.0.0'
+  aicloader: '>=1.1.0'

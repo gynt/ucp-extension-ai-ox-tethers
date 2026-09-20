@@ -1,0 +1,11 @@
+meta:
+  version: 1.0.0
+config-sparse:
+  modules:
+    ucp2-legacy:
+      config:
+        ai_tethers:
+          enabled:
+            contents:
+              required-value: false
+  plugins: {}

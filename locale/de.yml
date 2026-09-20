@@ -1,0 +1,21 @@
+fixes: Fehlerbehebungen
+title: Ochsenjoche der KI
+description: Bestimmt, wie die KI Ochsenjoche für ihre Steinbrüche baut.
+mode: AIC-Einstellungen
+override_aic: Diese Standardwerte für jede KI verwenden
+use_aic: Eigene AIC-Einstellungen pro KI zulassen
+disable_initial: Nicht automatisch ein Ochsenjoch mit jedem Steinbruch bauen
+dynamic_title: Dynamische Limits
+help_text: Ein Ochsenjoch wird dem Steinbruch zugeordnet, von dem es zuletzt Stein abgeholt hat. Die KI
+  baut weitere Joche, wenn ein Steinbruch zu wenige hat oder der Steinbestand pro Joch den Schwellenwert
+  übersteigt. Die folgenden Limits begrenzen den weiteren Bau.
+max_total: Maximale Ochsenjoche pro KI
+max_per_quarry: Multiplikator des Gesamtlimits pro Steinbruch
+multiplier_help: Das Gesamtlimit ist zusätzlich auf diesen Wert mal die Anzahl der Steinbrüche begrenzt.
+max_linked: Maximale zugeordnete Joche pro Steinbruch
+min_linked: Minimale zugeordnete Joche pro Steinbruch
+threshold: Stein pro Joch vor dem Bau eines weiteren
+advanced: Erweiterte Einstellungen
+logging: Bauentscheidungen der KI für Ochsenjoche protokollieren
+log_level: Protokollstufe
+ai: KI

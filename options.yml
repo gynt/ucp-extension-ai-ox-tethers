@@ -2,24 +2,14 @@ meta:
   version: 1.0.0
 options:
 - name: group1
-  header: AI Ox Tether Control
-  description: AI builds too few ox tethers. The options below tweak that behaviour
-  display: GroupBox
-  columns: 1
+  header: '{{title}}'
+  display: UCP2Switch
   category:
-  - AI
-  - Buildings
-  - Ox Tether
+  - '{{ai}}'
+  - '{{fixes}}'
   children:
-  - name: element0
-    text: Enable better ox tethers for AI
-    display: Switch
-    url: ai-ox-tethers.oxtethers.enabled
-    contents:
-      value: false
   - name: element7
-    text: |
-      Set whether values below override AI Personality flavour
+    text: '{{mode}}'
     display: Choice
     url: ai-ox-tethers.oxtethers.mode
     enabled: ai-ox-tethers.oxtethers.enabled
@@ -27,49 +17,24 @@ options:
       value: use_aic
       choices:
       - name: override_aic
-        text: Override AI Personalities (AIC)
+        text: '{{override_aic}}'
       - name: use_aic
-        text: Respect AI Personalities (AIC)
+        text: '{{use_aic}}'
   - name: initialOxTether
-    text: "Disable automatic ox tether placement when quarry is built"
+    text: '{{disable_initial}}'
     display: Switch
     contents:
       value: true
     url: ai-ox-tethers.oxtethers.parameters.disableInitialOxTether
     enabled: ai-ox-tethers.oxtethers.enabled
-
   - name: group_dynamic
-    text: Instead of a fixed maximum of 3 ox tethers per quarry, the options below allows more ox tethers per quarry.
-    header: Dynamic logic
-    enabled: ai-ox-tethers.oxtethers.logic.dynamic
-    display: GroupBox
+    text: '{{help_text}}'
+    header: '{{dynamic_title}}'
+    enabled: ai-ox-tethers.oxtethers.enabled
+    display: UCP2Switch
     children:
-    - name: element8
-      text: |
-        Enable dynamic logic
-      display: Switch
-      url: ai-ox-tethers.oxtethers.logic.dynamic
-      enabled: ai-ox-tethers.oxtethers.enabled
-      contents:
-        value: true
-    - name: elementparagraph1
-      display: Paragraph
-      text:  >-
-        Every few ticks, each AI checks whether to build an ox tether.
-        The vanilla game checks which quarry has too many stones in its pile compared to the amount of ox tethers that were built for it.
-        In vanilla, the maximum of linked ox tethers is hardcoded to 3.
-        Furthermore, the threshold is set to 20 stones per ox tether.
-        The maximum amount of stones a quarry's pile can have is 48.
-        Thus, in vanilla, if a quarry has more than 40 stones and two ox tethers, another tether will be built.
-        But, that will be the last ox tether that will be built for that quarry.
-
-
-        Dynamic logic removes this limit of 3 ox tethers per quarry, and introduces "linked ox tethers", which means "ox tethers that took stones from a quarry".
-        
-        
-        To avoid the AI from spamming ox tethers, some parameters have to be defined.
     - name: element1
-      text: The total amount of ox tethers for this player will never go above this value.
+      text: '{{max_total}}'
       display: Number
       url: ai-ox-tethers.oxtethers.parameters.maxOxTethers
       enabled: ai-ox-tethers.oxtethers.logic.dynamic
@@ -79,7 +44,7 @@ options:
         max: 2000
         step: 1
     - name: element2
-      text: The total amount of ox tethers for this player will never go above this value multiplied by the amount of quarries.
+      text: '{{max_per_quarry}}'
       display: Number
       url: ai-ox-tethers.oxtethers.parameters.dynamicMaxOxTethers
       enabled: ai-ox-tethers.oxtethers.logic.dynamic
@@ -88,8 +53,9 @@ options:
         min: 0
         max: 2000
         step: 1
+      tooltip: '{{multiplier_help}}'
     - name: element4
-      text: If the amount of linked ox tethers for a quarry is higher than this value, no ox tether is built for this quarry.
+      text: '{{max_linked}}'
       display: Number
       url: ai-ox-tethers.oxtethers.parameters.maximumOxTethersPerQuarry
       contents:
@@ -99,7 +65,7 @@ options:
         step: 1
       enabled: ai-ox-tethers.oxtethers.logic.dynamic
     - name: element3
-      text: If the amount of linked ox tethers for a quarry is lower than this value, an ox tether will be built for this quarry.
+      text: '{{min_linked}}'
       display: Number
       url: ai-ox-tethers.oxtethers.parameters.minimumOxTethersPerQuarry
       contents:
@@ -109,7 +75,7 @@ options:
         step: 1
       enabled: ai-ox-tethers.oxtethers.logic.dynamic
     - name: element5
-      text: If `stones / linked ox tethers` goes above this value for a quarry, another ox tether is built for that quarry.
+      text: '{{threshold}}'
       display: Number
       url: ai-ox-tethers.oxtethers.parameters.thresholdStoneLoad
       contents:
@@ -118,23 +84,32 @@ options:
         max: 48
         step: 1
       enabled: ai-ox-tethers.oxtethers.logic.dynamic
+    url: ai-ox-tethers.oxtethers.logic.dynamic
+    contents:
+      value: true
   - name: group_advanced
-    header: Avanced settings
+    header: '{{advanced}}'
     enabled: ai-ox-tethers.oxtethers.enabled
     display: GroupBox
     children:
-      - name: logging
-        header: "Log the ox tether building decision behaviour of the AI"
-        hasHeader: true
-        text: "Set the log level"
-        display: UCP2Slider
-        contents:
-          value:
-            enabled: false
-            sliderValue: 2 # DEBUG level
-          min: -2
-          max: 10
-          step: 1
-          decimals: 0
-        url: ai-ox-tethers.oxtethers.log
-        enabled: ai-ox-tethers.oxtethers.enabled
+    - name: logging
+      header: '{{logging}}'
+      hasHeader: true
+      text: '{{log_level}}'
+      display: UCP2Slider
+      contents:
+        value:
+          enabled: false
+          sliderValue: 2
+        min: -2
+        max: 10
+        step: 1
+        decimals: 0
+      url: ai-ox-tethers.oxtethers.log
+      enabled: ai-ox-tethers.oxtethers.enabled
+    accordion:
+      enabled: true
+  text: '{{description}}'
+  url: ai-ox-tethers.oxtethers.enabled
+  contents:
+    value: false

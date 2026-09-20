@@ -1,0 +1,21 @@
+fixes: Javítások
+title: Az MI ökörkarámjainak kezelése
+description: Beállítja, hogyan épít az MI ökörkarámokat a kőfejtőihez.
+mode: AIC-beállítások
+override_aic: Ezek az értékek érvényesek minden MI-re
+use_aic: Külön AIC-beállítások engedélyezése MI-nként
+disable_initial: Ne épüljön automatikusan ökörkarám minden kőfejtő mellé
+dynamic_title: Dinamikus korlátok
+help_text: Minden ökörkarám ahhoz a kőfejtőhöz kapcsolódik, ahonnan legutóbb követ szállított. Az MI új
+  karámot épít, ha túl kevés van, vagy az egy karámra jutó kő meghaladja a küszöböt. Az alábbi korlátok
+  határt szabnak a további építésnek.
+max_total: Ökörkarámok maximális száma MI-nként
+max_per_quarry: Az összkorlát kőfejtőnkénti szorzója
+multiplier_help: Az összkorlát legfeljebb ez az érték szorozva a kőfejtők számával.
+max_linked: Kapcsolt karámok maximuma kőfejtőnként
+min_linked: Kapcsolt karámok minimuma kőfejtőnként
+threshold: Kő karámonként újabb karám építése előtt
+advanced: Haladó beállítások
+logging: Az MI ökörkarám-építési döntéseinek naplózása
+log_level: Naplózási szint
+ai: MI
